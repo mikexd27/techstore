@@ -38,19 +38,15 @@ const getOrden = async (req, res) => {
 };
 
 const updateOrden = async (req, res) => {
-
+ //pendiente" a "enviado" o "entregado"    
     try {
 
-        const { id, idCliente, producto, cantidad, total, estado } = req.body;
-        if (id === undefined || idCliente === undefined || producto === undefined || cantidad === undefined || total === undefined || estado === undefined) {
+        const { id, estado } = req.body;
+        if (id === undefined || estado === undefined) {
             res.status(400).json({ "message": "Bad Request. Please fill all fields." })
         }
-        const connection = await getConnection();
-        const result = await connection.query(`UPDATE orden SET idCliente = '${idCliente}', 
-                                                      producto = '${producto}', 
-                                                      cantidad = '${cantidad}', 
-                                                      total = '${total}',
-                                                      estado = '${estado}'
+        const connection = await getConnection(); 
+        const result = await connection.query(`UPDATE orden SET estado = '${estado}'                                 
                                                 WHERE id = '${id}'`);
         res.status(200).json({ "message": "Orden actualizada" })
         //res.send(result);
