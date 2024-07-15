@@ -4,6 +4,7 @@ import producto from "./routes/producto.routes";
 import cliente from "./routes/cliente.routes";
 import orden from "./routes/orden.routes";
 import categoria from "./routes/categoria.routes";
+import usuario from "./routes/usuario.routes";
 import cors from "cors";
 
 const app = express();
@@ -21,5 +22,6 @@ app.use(producto);
 app.use(cliente);
 app.use(orden);
 app.use(categoria);
+app.use(usuario);
 
 export default app;
